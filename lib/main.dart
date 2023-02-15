@@ -1,9 +1,11 @@
-import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
+
 import 'package:path_provider/path_provider.dart';
+
 import 'package:technical_test/data/common/dio.client.dart';
 import 'package:technical_test/data/repository/articles.repository.dart';
 import 'package:technical_test/domain/models/article/article.cache.dart';
@@ -36,36 +38,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return DynamicColorBuilder(
-      builder:(lightDynamic, darkDynamic) {
-
-        return RepositoryProvider(
-          create: (context) => ArticleRepository(dio: DioClient.build(), articlesCache: ArticlesCache()),
-        
-          child: MultiBlocProvider(
-            providers: [
-              BlocProvider<HomeBloc>(create:(context) => HomeBloc(articleRepo: RepositoryProvider.of<ArticleRepository>(context)))
-            ],
-            child: MaterialApp(
-              title: 'Test Eskuad',
-              debugShowCheckedModeBanner: false,
-                  
-              theme: ThemeData(
-                useMaterial3: true,
-                colorScheme: lightDynamic 
-              ),
-              darkTheme: ThemeData(
-                useMaterial3: true,
-                colorScheme: darkDynamic 
-              ),
-                  
-              home: const Scaffold(
-                body: HomeScreen()
-              ),
-            ),
+    return RepositoryProvider(
+      create: (context) => ArticleRepository(dio: DioClient.build(), articlesCache: ArticlesCache()),
+    
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<HomeBloc>(create:(context) => HomeBloc(articleRepo: RepositoryProvider.of<ArticleRepository>(context)))
+        ],
+        child: MaterialApp(
+          title: 'Test Eskuad',
+          debugShowCheckedModeBanner: false,
+          
+          theme: ThemeData(
+            useMaterial3: true,
+          ),  
+              
+          home: const Scaffold(
+            body: HomeScreen()
           ),
-        );
-      }, 
+        ),
+      ),
     );
   }
 }
