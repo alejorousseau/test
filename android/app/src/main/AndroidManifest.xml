@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.provider_hive_test">
+    package="com.example.technical_test">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="provider_hive_test"
+        android:label="Technical test"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
