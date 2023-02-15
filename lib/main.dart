@@ -49,8 +49,8 @@ class MyApp extends StatelessWidget {
                 colorScheme: darkDynamic 
               ),
                   
-              home:  Scaffold(
-                body: Container()
+              home: const Scaffold(
+                body: HomeScreen()
               ),
             ),
           ),
