@@ -6,23 +6,23 @@ part of 'article.model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class HitsListAdapter extends TypeAdapter<HitsList> {
+class ArticlesListAdapter extends TypeAdapter<ArticlesList> {
   @override
   final int typeId = 0;
 
   @override
-  HitsList read(BinaryReader reader) {
+  ArticlesList read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return HitsList(
-      hits: (fields[0] as List).cast<Hit>(),
+    return ArticlesList(
+      hits: (fields[0] as List).cast<Article>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, HitsList obj) {
+  void write(BinaryWriter writer, ArticlesList obj) {
     writer
       ..writeByte(1)
       ..writeByte(0)
@@ -35,22 +35,22 @@ class HitsListAdapter extends TypeAdapter<HitsList> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is HitsListAdapter &&
+      other is ArticlesListAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
 
-class HitAdapter extends TypeAdapter<Hit> {
+class ArticleAdapter extends TypeAdapter<Article> {
   @override
   final int typeId = 1;
 
   @override
-  Hit read(BinaryReader reader) {
+  Article read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Hit(
+    return Article(
       createdAt: fields[0] as DateTime,
       author: fields[1] as String,
       storyTitle: fields[2] as String,
@@ -59,7 +59,7 @@ class HitAdapter extends TypeAdapter<Hit> {
   }
 
   @override
-  void write(BinaryWriter writer, Hit obj) {
+  void write(BinaryWriter writer, Article obj) {
     writer
       ..writeByte(4)
       ..writeByte(0)
@@ -78,7 +78,7 @@ class HitAdapter extends TypeAdapter<Hit> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is HitAdapter &&
+      other is ArticleAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

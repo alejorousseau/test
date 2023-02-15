@@ -9,20 +9,20 @@ import 'package:hive/hive.dart';
 part 'article.model.g.dart';
 
 @HiveType(typeId: 0)
-class HitsList {
-    HitsList({
+class ArticlesList {
+    ArticlesList({
         required this.hits,
     });
 
     @HiveField(0)
-    List<Hit> hits;
+    List<Article> hits;
 
-    factory HitsList.fromRawJson(String str) => HitsList.fromJson(json.decode(str));
+    factory ArticlesList.fromRawJson(String str) => ArticlesList.fromJson(json.decode(str));
 
     String toRawJson() => json.encode(toJson());
 
-    factory HitsList.fromJson(Map<String, dynamic> json) => HitsList(
-        hits: List<Hit>.from(json["hits"].map((x) => Hit.fromJson(x))),
+    factory ArticlesList.fromJson(Map<String, dynamic> json) => ArticlesList(
+        hits: List<Article>.from(json["hits"].map((x) => Article.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -31,8 +31,8 @@ class HitsList {
 }
 
 @HiveType(typeId: 1)
-class Hit {
-    Hit({
+class Article {
+    Article({
         required this.createdAt,
         required this.author,
         required this.storyTitle,
@@ -48,11 +48,11 @@ class Hit {
     @HiveField(3)
     String? storyUrl;
 
-    factory Hit.fromRawJson(String str) => Hit.fromJson(json.decode(str));
+    factory Article.fromRawJson(String str) => Article.fromJson(json.decode(str));
 
     String toRawJson() => json.encode(toJson());
 
-    factory Hit.fromJson(Map<String, dynamic> json) => Hit(
+    factory Article.fromJson(Map<String, dynamic> json) => Article(
         createdAt: DateTime.parse(json["created_at"]),
         author: json["author"] ?? '',
         storyTitle: json["story_title"] ?? '',

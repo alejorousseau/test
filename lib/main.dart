@@ -14,8 +14,8 @@ Future<void> main() async {
 
   Hive.init((await getApplicationDocumentsDirectory()).path);
 
-  Hive.registerAdapter(HitsListAdapter());
-  Hive.registerAdapter(HitAdapter());
+  Hive.registerAdapter(ArticlesListAdapter());
+  Hive.registerAdapter(ArticleAdapter());
 
   runApp(const MyApp());
 }

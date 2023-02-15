@@ -4,7 +4,7 @@ import 'package:technical_test/domain/models/article.model.dart';
 
 abstract class IArticleRepository {
 
-  Future<HitsList?> get();
+  Future<ArticlesList?> get();
 
 } 
 
@@ -14,15 +14,15 @@ class ArticleRepository extends IArticleRepository {
   ArticleRepository({ required this.dio });
 
   @override
-  Future<HitsList?> get() async {
+  Future<ArticlesList?> get() async {
     final res = await dio.get(
       '/search_by_date?query=mobile'
     );
 
     if( res.statusCode != 200 && res.statusCode != 200 ) return null;
 
-    final hitsList = HitsList.fromJson( res.data );
-    return hitsList;
+    final articleList = ArticlesList.fromJson( res.data );
+    return articleList;
   }
 
 }
