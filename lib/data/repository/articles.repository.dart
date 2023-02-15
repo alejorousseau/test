@@ -31,7 +31,8 @@ class ArticleRepository extends IArticleRepository {
     if( res.statusCode != 200 && res.statusCode != 200 ) return null;
     final articleList = ArticlesList.fromJson( res.data ).articles;
     articlesCache.setNewArticles(newArticles: articleList);
-    
+    articleList.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
     return articleList;
   }
 
