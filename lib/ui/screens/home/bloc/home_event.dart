@@ -6,3 +6,10 @@ abstract class HomeEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class LoadData extends HomeEvent {
+  final bool isRefreshing;
+  const LoadData({
+     this.isRefreshing = false
+  });
+}
