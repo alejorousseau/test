@@ -43,9 +43,8 @@ dependencies:
   
   # local storage
   hive: ^2.2.3
-  
-  # build
-  build_runner: ^2.3.3
+  path_provider: ^2.0.12
+  analyzer: ^5.5.0
 
   # theme 
   dynamic_color: ^1.6.2
@@ -53,6 +52,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # local storage
+  hive_generator: ^2.0.0
+
+  # build
+  build_runner: ^2.3.3
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

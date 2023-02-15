@@ -4,11 +4,17 @@
 
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'article.model.g.dart';
+
+@HiveType(typeId: 0)
 class HitsList {
     HitsList({
         required this.hits,
     });
 
+    @HiveField(0)
     List<Hit> hits;
 
     factory HitsList.fromRawJson(String str) => HitsList.fromJson(json.decode(str));
@@ -24,6 +30,7 @@ class HitsList {
     };
 }
 
+@HiveType(typeId: 1)
 class Hit {
     Hit({
         required this.createdAt,
@@ -32,9 +39,13 @@ class Hit {
         required this.storyUrl,
     });
 
+    @HiveField(0)
     DateTime createdAt;
+    @HiveField(1)
     String author;
+    @HiveField(2)
     String storyTitle;
+    @HiveField(3)
     String? storyUrl;
 
     factory Hit.fromRawJson(String str) => Hit.fromJson(json.decode(str));

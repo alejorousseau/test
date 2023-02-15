@@ -1,7 +1,17 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:technical_test/domain/models/article.model.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Hive.init((await getApplicationDocumentsDirectory()).path);
+
+  Hive.registerAdapter(HitsListAdapter());
+  Hive.registerAdapter(HitAdapter());
+
   runApp(const MyApp());
 }
 
