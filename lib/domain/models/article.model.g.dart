@@ -17,7 +17,7 @@ class ArticlesListAdapter extends TypeAdapter<ArticlesList> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ArticlesList(
-      hits: (fields[0] as List).cast<Article>(),
+      articles: (fields[0] as List).cast<Article>(),
     );
   }
 
@@ -26,7 +26,7 @@ class ArticlesListAdapter extends TypeAdapter<ArticlesList> {
     writer
       ..writeByte(1)
       ..writeByte(0)
-      ..write(obj.hits);
+      ..write(obj.articles);
   }
 
   @override

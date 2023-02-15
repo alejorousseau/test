@@ -11,22 +11,22 @@ part 'article.model.g.dart';
 @HiveType(typeId: 0)
 class ArticlesList {
     ArticlesList({
-        required this.hits,
+        required this.articles,
     });
 
     @HiveField(0)
-    List<Article> hits;
+    List<Article> articles;
 
     factory ArticlesList.fromRawJson(String str) => ArticlesList.fromJson(json.decode(str));
 
     String toRawJson() => json.encode(toJson());
 
     factory ArticlesList.fromJson(Map<String, dynamic> json) => ArticlesList(
-        hits: List<Article>.from(json["hits"].map((x) => Article.fromJson(x))),
+        articles: List<Article>.from(json["hits"].map((x) => Article.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
-        "hits": List<dynamic>.from(hits.map((x) => x.toJson())),
+        "hits": List<dynamic>.from(articles.map((x) => x.toJson())),
     };
 }
 
