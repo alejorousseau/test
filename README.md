@@ -3,6 +3,7 @@
 
 - [Run app](#run-app)
 - [Development decisions](#development-decisions)
+  - [Architecture](#architecture)
   - [Api response handle](#api-response-handle)
   - [Cache](#cache)
   - [Business Logic](#business-logic)
